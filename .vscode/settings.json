@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:CCTracker}/db.sqlite",
+            "name": "dqlitedb"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
