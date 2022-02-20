@@ -2,24 +2,20 @@ import pandas as pd
 import sqlite3 as sql
 import datetime
 
+#connect to sqlite db
 trans_conn = sql.connect("db/db.sqlite")
 transactions = pd.read_sql_query("SELECT * from transactions", trans_conn)
 
-print('Transactions are:\n')
-print(transactions)
-
+#create separate df of all buys and sell
 buys = transactions[(transactions.type == 'BUY')]
-
-print("\nBuys are:\n")
-print(buys)
-
 sells = transactions[(transactions.type == 'SELL')]
 
-print("\nSells are:\n")
-print(sells)
+# create df headers for BTC portfolio
+BTC = pd.DataFrame(data={'date': ['2022-01-01'], 'amount': [0], 'value': [0], 'gav': [0], 'profit/loss': [0]})
 
-start_date = transactions['date'].min() 
+#
+ind = 1
+transactions[0:ind]
 
-last_date = transactions['date'].max()
 
-print(f"\nstarting date is: {start_date} and last date is: {last_date}")
+print(transactions[0:ind].type)
