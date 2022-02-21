@@ -12,10 +12,19 @@ sells = transactions[(transactions.type == 'SELL')]
 
 # create df headers for BTC portfolio
 BTC = pd.DataFrame(data={'date': ['2022-01-01'], 'amount': [0], 'value': [0], 'gav': [0], 'profit/loss': [0]})
-
+#print(BTC)
 #
-ind = 1
+index = 0
+ind = index + 1
+
+ceiling = transactions.id.max()
 transactions[0:ind]
 
+BTC_sum = BTC.value.sum()
 
-print(transactions[0:ind].type)
+
+if transactions.iloc[index]['type'] == 'BUY':
+    
+    new_transaction = pd.DataFrame(data={'date': [transactions.iloc[index]['date']], })
+    print(new_transaction)
+#print(transactions[0:ind])

@@ -16,7 +16,7 @@ lang_list = [
 cur.executemany("insert into lang values (?, ?)", lang_list)
 
 # And this is the named style:
-cur.execute("select * from lang where first_appeared=:year", {"year": 1972})
+cur.execute("SELCET * from lang where first_appeared=:year", {"year": 1972})
 print(cur.fetchall())
 
 con.close()
