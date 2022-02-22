@@ -3,11 +3,12 @@ import sqlite3 as sql
 from temp_func import *
 import sqlite3 as sql
 
-class get_transactions_db():
+def get_transactions_db():
     conn = sql.connect('db/db.sqlite')
     c = conn.cursor()
     c.execute("SELECT * FROM transactions")
     trans = c.fetchall()
+    return(trans)
 
 
 
@@ -25,13 +26,28 @@ def get_desired_action():
         print("Well thats not correct, let's start over. Chose R/C/D\n")
         get_desired_action()
 
-def record_transaction():
-    print("You chose 'Record transaction'")
 
 def change_transaction():
     print('You chose "Change transaction"')
 
 def delete_transaction():
     print('You chose "Delete transaction"')
+
+def record_transaction():
+    print("You chose 'Record transaction'")
+    trans_id = int(input('id'))
+    ccurrency = input('Which Coin?')
+    date = input('which date?')
+    t_type = input('Buy or Sell')
+    pair = input('Which pair?')
+    amount = float(input('How many coins?'))
+    price = float(input('Value of coin?'))
+    exchange = input('At which exchange did you buy?')
+    cost = float(price) / float(amount)
+    #print(f"You {t_type}ed {amount} of {coin.upper()} for {price} on {date}\n correct???")
+
+    conn = sql.connect('db/db.sqlite')
+    c = conn.cursor()
+    c.execute("INSERT INTO transactions VALUES(?,?,?,?,?,?,?,?)", (trans_id, date, t_type, coin, pair, amount, price, cost, exchange ))
 
 
