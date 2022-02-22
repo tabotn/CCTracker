@@ -1,4 +1,14 @@
 import os
+import sqlite3 as sql
+from temp_func import *
+import sqlite3 as sql
+
+def get_transaction_db():
+    conn = sql.connect('db/db.sqlite')
+    c = conn.cursor()
+    c.execute("SELECT * FROM transactions")
+    trans = c.fetchall()
+
 
 def get_desired_action():
     action = input('What do you wan to do?\n 1. (R)ecord transaction?\n 2. (C)ange transaction?\n 3. (D)elete transaction?\n ')
@@ -22,3 +32,5 @@ def change_transaction():
 
 def delete_transaction():
     print('You chose "Delete transaction"')
+
+get_transaction_db()
